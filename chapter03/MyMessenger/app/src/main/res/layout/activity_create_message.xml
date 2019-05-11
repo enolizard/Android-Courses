@@ -20,8 +20,16 @@
         android:id="@+id/send_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:onClick="onSendMessage"
-        android:text="@string/send_button"
-        android:layout_marginTop="20dp"/>
+        android:text="@string/send_button" />
+
+    <Button
+        android:id="@+id/send_message_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="onSendMessageEmail"
+        android:text="@string/send_button_email" />
 
 </android.support.v7.widget.LinearLayoutCompat>

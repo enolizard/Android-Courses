@@ -2,4 +2,6 @@
     <string name="app_name">My Messenger</string>
     <string name="hint_message">Enter a message</string>
     <string name="send_button">Send Message</string>
+    <string name="send_button_email">Send Email Message</string>
+    <string name="choserText">Send message via ...</string>
 </resources>
