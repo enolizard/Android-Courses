@@ -3,4 +3,6 @@
     <string name="edittext_hint_message">Message</string>
     <string name="button_text_send">Send</string>
     <string name="edittext_hint_recipent">To</string>
+    <string name="button_text_toDuck">ToDuck</string>
+    <string name="textview_text_duck">It\'s a duck!</string>
 </resources>

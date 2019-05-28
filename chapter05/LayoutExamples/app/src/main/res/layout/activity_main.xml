@@ -24,12 +24,26 @@
         android:hint="@string/edittext_hint_message"
         android:textSize="@dimen/text_size" />
 
-
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/button_text_send"
-        android:textSize="@dimen/text_size" />
+        android:layout_gravity="end"
+        android:orientation="horizontal">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDuckLayout"
+            android:text="@string/button_text_toDuck"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/button_text_send"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size" />
+    </LinearLayout>
 </android.support.v7.widget.LinearLayoutCompat>
