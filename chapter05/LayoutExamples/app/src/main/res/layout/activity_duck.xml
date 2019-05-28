@@ -10,10 +10,22 @@
         android:scaleType="centerCrop"
         android:src="@drawable/duck" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_text_duck"
-        android:textSize="@dimen/text_size_big" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|end"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textview_text_duck"
+            android:textSize="@dimen/text_size_big" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textview_text_duck2"
+            android:textSize="@dimen/text_size_big" />
+    </LinearLayout>
 </FrameLayout>

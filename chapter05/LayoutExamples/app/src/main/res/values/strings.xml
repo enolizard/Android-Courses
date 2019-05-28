@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">Layout Examples</string>
     <string name="edittext_hint_message">Message</string>
-    <string name="button_text_send">Send</string>
+    <string name="button_text_send">Send Message</string>
     <string name="edittext_hint_recipent">To</string>
-    <string name="button_text_toDuck">ToDuck</string>
+    <string name="button_text_toDuck">To Duck Image</string>
     <string name="textview_text_duck">It\'s a duck!</string>
+    <string name="textview_text_duck2">(not a real one)</string>
+    <string name="button_text_toTea">To choosen Tea</string>
+    <string name="textview_text_tea">How do you like your tea served?</string>
+    <string name="togbutton_text_on">Hot</string>
+    <string name="togbutton_text_off">Cold</string>
+    <string name="checkbox_text_lemon">Lemon</string>
+    <string name="checkbox_text_milk">Milk</string>
+    <string name="checkbox_text_sugar">Sugar</string>
 </resources>

@@ -2,6 +2,6 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">40dp</dimen>
-    <dimen name="text_size">16sp</dimen>
-    <dimen name="text_size_big">25sp</dimen>
+    <dimen name="text_size">10sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
 </resources>

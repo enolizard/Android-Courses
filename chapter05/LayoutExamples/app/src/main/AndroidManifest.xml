@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DuckActivity"/>
+        <activity android:name=".TeaActivity"/>
     </application>
 
 </manifest>
