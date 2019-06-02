@@ -5,12 +5,14 @@ import android.os.Bundle;
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String EXTRA_WORKOUT_ID = "workoutId";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        
+
         WorkoutDetailFragment frag = (WorkoutDetailFragment) getSupportFragmentManager().findFragmentById(R.id.detail_flag);
-        frag.setWorkoutId(1);
+        frag.setWorkoutId(getIntent().getIntExtra(EXTRA_WORKOUT_ID, 1));
     }
 }
