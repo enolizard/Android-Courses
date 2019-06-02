@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class WorkoutDetailFragment extends Fragment {
+
     private int workoutId;
 
     public WorkoutDetailFragment() {
