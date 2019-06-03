@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
 
         if (fragmentContainer == null) {
             Intent intent = new Intent(this, DetailActivity.class);
-            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, id);
+            intent.putExtra(WorkoutDetailFragment.EXTRA_WORKOUT_ID, id);
             startActivity(intent);
         } else {
             WorkoutDetailFragment details = new WorkoutDetailFragment();

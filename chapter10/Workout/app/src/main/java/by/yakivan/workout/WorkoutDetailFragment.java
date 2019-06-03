@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class WorkoutDetailFragment extends Fragment {
 
+    public static final String EXTRA_WORKOUT_ID = "workoutId";
+
     private int workoutId;
 
     public WorkoutDetailFragment() {
@@ -21,7 +23,7 @@ public class WorkoutDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            workoutId = savedInstanceState.getInt("workoutId");
+            workoutId = savedInstanceState.getInt(EXTRA_WORKOUT_ID);
         }
     }
 
@@ -47,7 +49,7 @@ public class WorkoutDetailFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putInt("workoutId", workoutId);
+        outState.putInt(EXTRA_WORKOUT_ID, workoutId);
     }
 
     public void setWorkoutId(int workoutId) {
