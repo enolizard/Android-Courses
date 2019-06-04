@@ -11,14 +11,16 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        WorkoutDetailFragment details = new WorkoutDetailFragment();
-        details.setWorkoutId(getIntent().getIntExtra(WorkoutDetailFragment.EXTRA_WORKOUT_ID, 1));
+        if (savedInstanceState == null) {
+            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            details.setWorkoutId(getIntent().getIntExtra(WorkoutDetailFragment.EXTRA_WORKOUT_ID, 1));
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        ft.replace(R.id.fragment_container, details);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.replace(R.id.fragment_container, details);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 //        ft.addToBackStack(null);
-        ft.commit();
+            ft.commit();
+        }
     }
 }
