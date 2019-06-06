@@ -1,6 +1,8 @@
 package by.yakivan.bitsandpizzas;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager pager = findViewById(R.id.pager);
         pager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(pager);
     }
 
     @Override
@@ -53,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private void setShareActionIntent(String text) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
@@ -64,6 +70,21 @@ public class MainActivity extends AppCompatActivity {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int i) {
+            switch (i) {
+                case 0:
+                    return getResources().getText(R.string.home_tab);
+                case 1:
+                    return getResources().getText(R.string.pizza_tab);
+                case 2:
+                    return getResources().getText(R.string.pasta_tab);
+                case 3:
+                    return getResources().getText(R.string.store_tab);
+            }
+            return null;
         }
 
         @Override

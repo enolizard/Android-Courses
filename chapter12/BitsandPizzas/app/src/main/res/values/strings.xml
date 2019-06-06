@@ -4,6 +4,10 @@
     <string name="create_order_title">Create Order</string>
     <string name="action_share">Share</string>
     <string name="title_top">Top Fragment</string>
+    <string name="pizza_tab">Pizzas</string>
+    <string name="pasta_tab">Pasta</string>
+    <string name="store_tab">Stores</string>
+    <string name="home_tab">Home</string>
     <string-array name="pizzas">
         <item>Diavolo</item>
         <item>Fungui</item>
