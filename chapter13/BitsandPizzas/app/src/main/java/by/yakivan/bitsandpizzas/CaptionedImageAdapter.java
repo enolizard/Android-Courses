@@ -14,6 +14,11 @@ import android.widget.TextView;
 class CaptionedImageAdapter extends RecyclerView.Adapter<CaptionedImageAdapter.ViewHolder> {
     private String[] captions;
     private int[] imageIds;
+    private Listener listener;
+
+    interface Listener {
+        void onClick(int position);
+    }
 
     public CaptionedImageAdapter(String[] captions, int[] imageIds) {
         this.captions = captions;
@@ -21,11 +26,17 @@ class CaptionedImageAdapter extends RecyclerView.Adapter<CaptionedImageAdapter.V
     }
 
     @Override
-    public CaptionedImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public CaptionedImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int i) {
         CardView cv = (CardView) LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.card_captioned_image, parent, false);
-
+        cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onClick(i);
+            }
+        });
         return new ViewHolder(cv);
     }
 
@@ -45,6 +56,10 @@ class CaptionedImageAdapter extends RecyclerView.Adapter<CaptionedImageAdapter.V
     @Override
     public int getItemCount() {
         return captions.length;
+    }
+
+    public void setListener(Listener listener) {
+        this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
