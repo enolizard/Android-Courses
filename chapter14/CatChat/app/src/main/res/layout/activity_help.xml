@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.HelpActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_main" />
 
-    <FrameLayout
-        android:id="@+id/container_frag"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="@dimen/large_text_size"
+        android:text="Help!" />
 </android.support.v7.widget.LinearLayoutCompat>
