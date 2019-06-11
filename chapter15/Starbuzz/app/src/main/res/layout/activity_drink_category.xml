@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DrinkCategoryActivity">
-<ListView
-    android:layout_width="match_parent"
-    android:id="@+id/list_drinsk"
-    android:entries="@array/options"
-    android:layout_height="wrap_content"/>
+    tools:context=".activities.DrinkCategoryActivity">
+
+    <ListView
+        android:id="@+id/list_drinsk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/options" />
 </android.support.v7.widget.LinearLayoutCompat>

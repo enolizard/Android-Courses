@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DrinkActivity" />
+        <activity android:name=".activities.DrinkActivity" />
         <activity
-            android:name=".DrinkCategoryActivity"
+            android:name=".activities.DrinkCategoryActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".TopLevelActivity"
+            android:name=".activities.TopLevelActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

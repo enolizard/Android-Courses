@@ -1,4 +1,4 @@
-package by.yakivan.starbuzz;
+package by.yakivan.starbuzz.activities;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import by.yakivan.starbuzz.Drink;
+import by.yakivan.starbuzz.R;
+
 public class DrinkActivity extends AppCompatActivity {
 
     public static final String EXTRA_DRINK_ID = "drinkId";
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class DrinkActivity extends AppCompatActivity {
             finish();
         } else {
             Drink drink = Drink.drinks[drinkId];
-            photo.setImageDrawable(getDrawable(drink.getImageResourseId()));
+            photo.setImageResource(drink.getImageResourseId());
             name.setText(drink.getName());
             description.setText(drink.getDescription());
         }

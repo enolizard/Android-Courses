@@ -1,4 +1,4 @@
-package by.yakivan.starbuzz;
+package by.yakivan.starbuzz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import by.yakivan.starbuzz.Drink;
+import by.yakivan.starbuzz.R;
 
 public class DrinkCategoryActivity extends AppCompatActivity {
 
