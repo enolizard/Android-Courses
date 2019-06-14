@@ -38,6 +38,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     R.drawable.cappuccino);
             insertDrink(db, "Filter", "Our best drip coffee",
                     R.drawable.filter);
+            insertDrink(db, "Tea", "Black tea help me to forget problems",
+                    R.drawable.tea);
         }
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
