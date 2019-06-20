@@ -1,4 +1,4 @@
-package by.yakivan.starbuzz.Utils;
+package by.yakivan.starbuzz.utils;
 
 import android.content.Context;
 import android.widget.Toast;

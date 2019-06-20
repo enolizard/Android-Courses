@@ -5,22 +5,24 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import by.yakivan.starbuzz.Drink;
+import java.util.concurrent.TimeUnit;
+
 import by.yakivan.starbuzz.R;
-import by.yakivan.starbuzz.Utils.Toaster;
 import by.yakivan.starbuzz.database.DatabaseHelper;
+import by.yakivan.starbuzz.utils.Toaster;
 
 public class DrinkActivity extends AppCompatActivity {
 
     public static final String EXTRA_DRINK_ID = "drinkId";
+
     private ImageView photo;
     private TextView name;
     private TextView description;
@@ -53,7 +55,7 @@ public class DrinkActivity extends AppCompatActivity {
             db.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Toaster.toastLong(this, "Data unavailable");
+            Toaster.toastLong(this, getClass().getName() + " Data unavailable");
         }
     }
 
@@ -66,20 +68,41 @@ public class DrinkActivity extends AppCompatActivity {
 
     public void onFavoriteClicked(View view) {
         int drinkId = (int) getIntent().getExtras().get(EXTRA_DRINK_ID);
-        ContentValues drinkValues = new ContentValues();
-        drinkValues.put("FAVORITE", favorite.isChecked());
+        new UpdateDrinkTask().execute(drinkId);
+    }
 
-        SQLiteOpenHelper openHelper = new DatabaseHelper(this);
-        try {
-            SQLiteDatabase db = openHelper.getWritableDatabase();
-            db.update("DRINK",
-                    drinkValues,
-                    "_id = ?",
-                    new String[]{String.valueOf(drinkId)});
-            db.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Toaster.toastLong(this, "Data unavailable");
+    private class UpdateDrinkTask extends AsyncTask<Integer, Void, Boolean> {
+        private ContentValues drinkValues;
+
+        @Override
+        protected void onPreExecute() {
+            drinkValues = new ContentValues();
+            drinkValues.put("FAVORITE", favorite.isChecked());
+        }
+
+        @Override
+        protected Boolean doInBackground(Integer... integers) {
+            int drinkId = integers[0];
+
+            SQLiteOpenHelper openHelper = new DatabaseHelper(DrinkActivity.this);
+            try {
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+                db.update("DRINK",
+                        drinkValues,
+                        "_id = ?",
+                        new String[]{String.valueOf(drinkId)});
+                db.close();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            if (!success)
+                Toaster.toastLong(DrinkActivity.this, getClass().getName() + " Data unavailable");
         }
     }
 }

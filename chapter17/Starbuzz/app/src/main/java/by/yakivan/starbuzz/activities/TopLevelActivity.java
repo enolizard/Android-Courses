@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import by.yakivan.starbuzz.R;
-import by.yakivan.starbuzz.Utils.Toaster;
+import by.yakivan.starbuzz.utils.Toaster;
 import by.yakivan.starbuzz.database.DatabaseHelper;
 
 public class TopLevelActivity extends AppCompatActivity {
