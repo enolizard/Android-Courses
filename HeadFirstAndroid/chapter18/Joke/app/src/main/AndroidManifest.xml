@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".DelayedMessageService"
+            android:name=".MainService"
             android:exported="false"></service>
 
         <activity android:name=".MainActivity">

@@ -1,29 +1,29 @@
 package by.yakivan.joke;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findActivityViews();
     }
 
-    private void findActivityViews() {
-        button = findViewById(R.id.button);
+    public void onClickLog(View view) {
+        runService(MainService.CommandType.LogMessage);
     }
 
-    public void onClick(View view) {
-        Intent intent = new Intent(this, DelayedMessageService.class);
-        intent.putExtra(DelayedMessageService.EXTRA_MESSAGE,
-                getResources().getString(R.string.response));
+    public void onClickMusic(View view) {
+        runService(MainService.CommandType.Music);
+    }
+
+    private void runService(MainService.CommandType type) {
+        Intent intent = new Intent(this, MainService.class);
+        intent.putExtra(MainService.EXTRA_COMMAND_TYPE, type.toString());
         startService(intent);
     }
 }
