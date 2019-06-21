@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         runService(MainService.CommandType.Music);
     }
 
+    public void onClickNotification(View view) {
+        runService(MainService.CommandType.Notification);
+    }
+
     private void runService(MainService.CommandType type) {
         Intent intent = new Intent(this, MainService.class);
         intent.putExtra(MainService.EXTRA_COMMAND_TYPE, type.toString());
