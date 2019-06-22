@@ -8,13 +8,15 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 public class MainService extends IntentService {
     public static final String SERVICE_NAME = "MainService";
     public static final String EXTRA_COMMAND_TYPE = "CommandType";
-    public static final int NOTIFICATION_ID = 5453;
+
+    private static final int NOTIFICATION_ID = 5453;
+    public static final String CHANNEL_ID = "3213";
+    public static final String CHANNEL_NAME = "Question";
 
     public MainService() {
         super(SERVICE_NAME);
@@ -30,15 +32,7 @@ public class MainService extends IntentService {
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "test";
-            String description = "err desc";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("31423", name, importance);
-            channel.setDescription(description);
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
+        createChannel();
 
         CommandType command = CommandType.valueOf(intent.getStringExtra(EXTRA_COMMAND_TYPE));
         switch (command) {
@@ -66,6 +60,17 @@ public class MainService extends IntentService {
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 manager.notify(NOTIFICATION_ID, builder.build());
                 break;
+        }
+    }
+
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
     }
 
