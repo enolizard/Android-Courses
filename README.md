@@ -5,7 +5,7 @@ The folder contains solutions for tasks from the book “Head First Android Deve
  by Dawn Griffiths 
 ([git](https://github.com/dogriffiths/HeadFirstAndroid2ndEdition)).
 
-* ### AndroidApplicationArchitecture
+* ### AndroidAppArchitecture
 The folder contains solutions for tasks by the course "Android Application Architecture"
 ([youtube](https://www.youtube.com/playlist?list=PLyfVjOYzujuimhohH06QBmiBVhAuTiDYA))
  by Start Android channel.
