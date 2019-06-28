@@ -8,10 +8,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/message_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/message_what"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:hint="msg.what"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/message_obj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:hint="msg.obj"
+        android:inputType="text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSendMsg"
+        android:text="send msg" />
 </LinearLayout>
