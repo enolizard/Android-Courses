@@ -20,9 +20,9 @@ public class RaceCondition {
         Incrementation inc = new Incrementation();
 
         for (int i = 0; i < 10; i++) {
-            int finalI = i;
+            final int number = i;
             new Thread(() -> {
-                inc.syncAct(finalI);
+                inc.syncAct(number);
             }).start();
         }
     }
