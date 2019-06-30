@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CameraSample</string>
+    <string name="check_permission_checkbox">Check permission</string>
+    <string name="pick_image_button">Pick image</string>
+</resources>
