@@ -15,3 +15,9 @@ The folder contains solutions for tasks by the course "Development on Android"
 ([youtube](https://www.youtube.com/playlist?list=PLrCZzMib1e9ptI7bPXFG8X5xEiCBt5qYE))
  by Mail.Ru company.
 
+* ### Keddit
+The folder contains an application that presents the latest new from Reddit with an infinite scroll  
+to continuously load more news while you scroll down, showing the title, image, number of comments,  
+time published and the author of the news.
+([article](https://android.jlelse.eu/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664)), 
+([git repository](https://github.com/juanchosaravia/KedditBySteps))
