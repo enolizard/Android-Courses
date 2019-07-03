@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.news_fragment.*
 
 class NewsFragment : Fragment() {
 
+    private val newsList by lazy {
+        news_list
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 //        return inflater.inflate(R.layout.news_fragment, container, false)
         return container?.inflate(R.layout.news_fragment)
@@ -19,7 +23,7 @@ class NewsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        news_list.setHasFixedSize(true)
-        news_list.layoutManager = LinearLayoutManager(context)
+        newsList.setHasFixedSize(true)
+        newsList.layoutManager = LinearLayoutManager(context)
     }
 }
