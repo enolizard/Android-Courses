@@ -14,6 +14,20 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+
+        if (savedInstanceState == null) {
+            changeFragment(NewsFragment())
+        }
+    }
+
+    override fun onBackPressed() {
+        val manager = supportFragmentManager
+
+        if (manager.backStackEntryCount > 1)
+            manager.popBackStack()
+        else {
+            finish()
+        }
     }
 
     fun changeFragment(frag: Fragment, cleanStack: Boolean = false) {
@@ -34,16 +48,6 @@ class MainActivity : AppCompatActivity() {
         if (manager.backStackEntryCount > 0) {
             val first = manager.getBackStackEntryAt(0)
             manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }
-    }
-
-    override fun onBackPressed() {
-        val manager = supportFragmentManager
-
-        if (manager.backStackEntryCount > 1)
-            manager.popBackStack()
-        else {
-            finish()
         }
     }
 }
