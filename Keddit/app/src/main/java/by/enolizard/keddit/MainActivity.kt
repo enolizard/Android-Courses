@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import by.enolizard.keddit.features.news.NewsFragment
 
 class MainActivity : AppCompatActivity() {
 
