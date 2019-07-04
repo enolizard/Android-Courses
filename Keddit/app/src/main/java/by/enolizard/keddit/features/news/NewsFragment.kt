@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.enolizard.keddit.R
-import by.enolizard.keddit.commons.inflate
+import by.enolizard.keddit.commons.extensions.inflate
 import kotlinx.android.synthetic.main.news_fragment.*
 
 class NewsFragment : Fragment() {
