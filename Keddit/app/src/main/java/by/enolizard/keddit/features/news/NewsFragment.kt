@@ -40,7 +40,7 @@ class NewsFragment : Fragment() {
                         i,
                         1457207701L - i * 200,
 //                        "",
-                    "https://pp.userapi.com/c626220/v626220754/302ff/Ah7bXmVh_No.jpg",
+                        "https://pp.userapi.com/c626220/v626220754/302ff/Ah7bXmVh_No.jpg",
 //                        "http://lorempixel.com/200/200/technics/$i",
                         "url"
                 ))
