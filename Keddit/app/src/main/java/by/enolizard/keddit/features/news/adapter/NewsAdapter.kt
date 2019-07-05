@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.enolizard.keddit.commons.adapter.AdapterConstants
 import by.enolizard.keddit.commons.adapter.ViewType
 import by.enolizard.keddit.commons.adapter.ViewTypeDelegateAdapter
+import by.enolizard.keddit.commons.models.RedditNewsItem
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -26,11 +27,32 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return delegateAdapters.get(viewType)!!.onCreateViewHolder(parent)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         delegateAdapters.get(getItemViewType(position))!!.onBindViewHolder(holder, this.items[position])
     }
+
+    override fun getItemViewType(position: Int) = this.items[position].getViewType()
+
+    fun addNews(news: List<RedditNewsItem>) {
+        val initPostition = items.size - 1
+        items.removeAt(initPostition)
+        notifyItemRemoved(initPostition)
+
+        items.addAll(news)
+        items.add(loadingItem)
+        notifyItemRangeChanged(initPostition, items.size + 1)
+    }
+
+    fun clearAndAddNews(news: List<RedditNewsItem>) {
+        items.clear()
+        notifyItemRangeRemoved(0, getLastPosition())
+
+        items.addAll(news)
+        items.add(loadingItem)
+        notifyItemRangeInserted(0, items.size)
+    }
+
+    private fun getLastPosition() = if (items.lastIndex == -1) 0 else items.lastIndex
 }

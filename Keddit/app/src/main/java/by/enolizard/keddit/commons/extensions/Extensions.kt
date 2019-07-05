@@ -16,8 +16,9 @@ fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
 
 fun ImageView.loadImg(imageUrl: String) {
     if (TextUtils.isEmpty(imageUrl)) {
-        Picasso.get().load(R.mipmap.ic_launcher).into(this)
+        this.setImageResource(R.mipmap.ic_launcher)
+//        Picasso.get().load(R.mipmap.ic_launcher).into(this)
     } else {
-        Picasso.get().load(imageUrl).into(this)
+        Picasso.get().load(imageUrl).resize(40,40).centerCrop().into(this)
     }
 }

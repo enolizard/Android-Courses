@@ -25,8 +25,8 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter {
 
     class TurnsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.news_item)) {
         fun bind(item: RedditNewsItem) = with(itemView) {
-            Picasso.get().load(item.thumbnail).into(img_thumbnail)
-//            img_thumbnail.loadImg(item.thumbnail)
+//            Picasso.get().load(item.thumbnail).into(img_thumbnail)
+            img_thumbnail.loadImg(item.thumbnail)
             description.text = item.title
             author.text = item.author
             comments.text = "${item.numComments} comments"
