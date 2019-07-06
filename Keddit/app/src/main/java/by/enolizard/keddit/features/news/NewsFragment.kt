@@ -48,6 +48,8 @@ class NewsFragment : RxBaseFragment() {
                     Snackbar.make(newsList, e.message ?: "", Snackbar.LENGTH_LONG).show()
                 }
             )
+
+        subscriptions.add(subscription)
     }
 
     private fun initAdapter() {

@@ -2,7 +2,6 @@ package by.enolizard.keddit.commons
 
 import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.internal.subscriptions.ArrayCompositeSubscription
 
 open class RxBaseFragment() : Fragment() {
     protected var subscriptions = CompositeDisposable()
@@ -14,9 +13,9 @@ open class RxBaseFragment() : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if (!subscriptions.isDisposed) {
-            subscriptions.dispose()
-        }
+//        if (!subscriptions.isDisposed) {
+//            subscriptions.dispose()
+//        }
         subscriptions.clear()
     }
 }
