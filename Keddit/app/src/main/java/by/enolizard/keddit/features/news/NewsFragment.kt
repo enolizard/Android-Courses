@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.enolizard.keddit.R
+import by.enolizard.keddit.commons.RxBaseFragment
 import by.enolizard.keddit.commons.extensions.inflate
 import by.enolizard.keddit.features.news.adapter.NewsAdapter
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.news_fragment.*
 
-class NewsFragment : Fragment() {
+class NewsFragment : RxBaseFragment() {
 
     private val newsList: RecyclerView by lazy { news_list }
     private val newsManager by lazy { NewsManager() }
