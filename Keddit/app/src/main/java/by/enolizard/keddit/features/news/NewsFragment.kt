@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import by.enolizard.keddit.R
 import by.enolizard.keddit.commons.extensions.inflate
 import by.enolizard.keddit.features.news.adapter.NewsAdapter
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.news_fragment.*
 
 class NewsFragment : Fragment() {
@@ -36,6 +38,16 @@ class NewsFragment : Fragment() {
     }
 
     private fun requestNews() {
+        val subscription = newsManager.getNews()
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { retriedeNews ->
+                    (newsList.adapter as NewsAdapter).addNews(retriedeNews)
+                },
+                { e ->
+                    Snackbar.make(newsList, e.message ?: "", Snackbar.LENGTH_LONG).show()
+                }
+            )
     }
 
     private fun initAdapter() {
