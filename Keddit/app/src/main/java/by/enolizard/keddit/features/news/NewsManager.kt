@@ -1,29 +1,26 @@
 package by.enolizard.keddit.features.news
 
+import by.enolizard.keddit.api.RestApi
 import by.enolizard.keddit.commons.models.RedditNewsItem
 import io.reactivex.Observable
 
-class NewsManager {
+class NewsManager(private val api: RestApi = RestApi()) {
 
-    fun getNews(): Observable<List<RedditNewsItem>> {
+    fun getNews(limit: String = "10"): Observable<List<RedditNewsItem>> {
         return Observable.create { subcriber ->
-            val news = mutableListOf<RedditNewsItem>()
+            val callResponse = api.getNews("", limit)
+            val response = callResponse.execute()
 
-            for (i in 1..10) {
-                news.add(
-                    RedditNewsItem(
-                        "author$i",
-                        "Title $i",
-                        i,
-                        1457207701L - i * 200,
-                        "https://pp.userapi.com/c626220/v626220754/302ff/Ah7bXmVh_No.jpg",
-//                        "http://lorempixel.com/200/200/technics/$i",
-                        "url"
-                    )
-                )
+            if (response.isSuccessful) {
+                val news = response.body()!!.data.children.map {
+                    val item = it.data
+                    RedditNewsItem(item.author, item.title, item.num_comments, item.created, item.thumbnail, item.url)
+                }
+                subcriber.onNext(news)
+                subcriber.onComplete()
+            } else {
+                subcriber.onError(Throwable(response.message()))
             }
-
-            subcriber.onNext(news)
         }
     }
 }
