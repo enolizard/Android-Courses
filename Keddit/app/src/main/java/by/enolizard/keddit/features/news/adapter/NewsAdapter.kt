@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.enolizard.keddit.commons.adapter.AdapterConstants
 import by.enolizard.keddit.commons.adapter.ViewType
 import by.enolizard.keddit.commons.adapter.ViewTypeDelegateAdapter
-import by.enolizard.keddit.commons.models.RedditNewsItem
+import by.enolizard.keddit.commons.RedditNewsItem
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

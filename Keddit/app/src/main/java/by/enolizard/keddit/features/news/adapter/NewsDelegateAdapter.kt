@@ -8,7 +8,7 @@ import by.enolizard.keddit.commons.adapter.ViewTypeDelegateAdapter
 import by.enolizard.keddit.commons.extensions.getFriendlyTime
 import by.enolizard.keddit.commons.extensions.inflate
 import by.enolizard.keddit.commons.extensions.loadImg
-import by.enolizard.keddit.commons.models.RedditNewsItem
+import by.enolizard.keddit.commons.RedditNewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsDelegateAdapter : ViewTypeDelegateAdapter {
