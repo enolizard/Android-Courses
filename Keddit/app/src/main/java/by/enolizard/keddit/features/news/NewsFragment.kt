@@ -13,6 +13,7 @@ import by.enolizard.keddit.commons.RxBaseFragment
 import by.enolizard.keddit.commons.extensions.inflate
 import by.enolizard.keddit.features.news.adapter.NewsAdapter
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.news_fragment.*
 
@@ -46,6 +47,7 @@ class NewsFragment : RxBaseFragment() {
     private fun requestNews() {
         val subscription = newsManager.getNews(redditNews?.after ?: "")
             .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { retrievedNews ->
                     redditNews = retrievedNews
