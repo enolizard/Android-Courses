@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import by.enolizard.keddit.commons.adapter.AdapterConstants
 import by.enolizard.keddit.commons.adapter.ViewType
+import by.enolizard.keddit.commons.extensions.createParcel
 
 data class RedditNewsItem(
     val author: String,
@@ -14,7 +15,11 @@ data class RedditNewsItem(
     val url: String
 ) : ViewType, Parcelable {
 
-    override fun getViewType() = AdapterConstants.NEWS
+    companion object {
+        @JvmField
+        @Suppress("unused")
+        val CREATOR = createParcel { RedditNewsItem(it) }
+    }
 
     constructor(parcelIn: Parcel) : this(
         parcelIn.readString()!!,
@@ -25,27 +30,19 @@ data class RedditNewsItem(
         parcelIn.readString()!!
     )
 
-    override fun writeToParcel(p0: Parcel, p1: Int) {
-        p0.writeString(author)
-        p0.writeString(title)
-        p0.writeInt(numComments)
-        p0.writeLong(created)
-        p0.writeString(thumbnail)
-        p0.writeString(url)
+    override fun getViewType() = AdapterConstants.NEWS
+
+    override fun writeToParcel(dest: Parcel, p1: Int) {
+        dest.writeString(author)
+        dest.writeString(title)
+        dest.writeInt(numComments)
+        dest.writeLong(created)
+        dest.writeString(thumbnail)
+        dest.writeString(url)
     }
 
     override fun describeContents(): Int {
         return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<RedditNewsItem> {
-        override fun createFromParcel(parcel: Parcel): RedditNewsItem {
-            return RedditNewsItem(parcel)
-        }
-
-        override fun newArray(size: Int): Array<RedditNewsItem?> {
-            return arrayOfNulls(size)
-        }
     }
 }
 
@@ -54,6 +51,12 @@ data class RedditNews(
     val before: String,
     val news: List<RedditNewsItem>
 ) : Parcelable {
+
+    companion object {
+        @JvmField
+        @Suppress("unused")
+        val CREATOR = createParcel { RedditNews(it) }
+    }
 
     constructor(parcelIn: Parcel) : this(
         parcelIn.readString()!!,
@@ -71,15 +74,5 @@ data class RedditNews(
 
     override fun describeContents(): Int {
         return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<RedditNews> {
-        override fun createFromParcel(parcel: Parcel): RedditNews {
-            return RedditNews(parcel)
-        }
-
-        override fun newArray(size: Int): Array<RedditNews?> {
-            return arrayOfNulls(size)
-        }
     }
 }
