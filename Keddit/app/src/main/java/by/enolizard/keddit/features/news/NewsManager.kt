@@ -1,11 +1,12 @@
 package by.enolizard.keddit.features.news
 
-import by.enolizard.keddit.api.RestApi
+import by.enolizard.keddit.api.NewsApi
+import by.enolizard.keddit.api.NewsRestApi
 import by.enolizard.keddit.commons.RedditNews
 import by.enolizard.keddit.commons.RedditNewsItem
 import io.reactivex.Observable
 
-class NewsManager(private val api: RestApi = RestApi()) {
+class NewsManager(private val api: NewsApi = NewsRestApi()) {
 
     fun getNews(after: String, limit: String = "10"): Observable<RedditNews> {
         return Observable.create { subcriber ->
