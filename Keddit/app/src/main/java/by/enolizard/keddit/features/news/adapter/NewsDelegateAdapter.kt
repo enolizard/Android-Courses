@@ -11,7 +11,11 @@ import by.enolizard.keddit.commons.extensions.loadImg
 import by.enolizard.keddit.commons.RedditNewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
-class NewsDelegateAdapter : ViewTypeDelegateAdapter {
+class NewsDelegateAdapter(val mCommit: onViewSelectedListener) : ViewTypeDelegateAdapter {
+
+    interface onViewSelectedListener {
+        fun onItemSelected(url: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return NewsViewHolder(parent)
@@ -22,7 +26,7 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter {
         holder.bind(item as RedditNewsItem)
     }
 
-    class NewsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.news_item)) {
+    inner class NewsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.news_item)) {
         fun bind(item: RedditNewsItem) = with(itemView) {
             img_thumbnail.loadImg(item.thumbnail)
 //            Picasso.get().load(item.thumbnail).into(img_thumbnail)
@@ -30,6 +34,10 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter {
             author.text = item.author
             comments.text = "${item.numComments} comments"
             time.text = item.created.getFriendlyTime()
+            url.text = item.url
+            super.itemView.setOnClickListener({
+                mCommit.onItemSelected(it.url.text as String)
+            })
         }
     }
 }

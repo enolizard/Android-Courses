@@ -1,5 +1,7 @@
 package by.enolizard.keddit.features.news
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +14,13 @@ import by.enolizard.keddit.commons.RedditNews
 import by.enolizard.keddit.commons.RxBaseFragment
 import by.enolizard.keddit.commons.extensions.inflate
 import by.enolizard.keddit.features.news.adapter.NewsAdapter
+import by.enolizard.keddit.features.news.adapter.NewsDelegateAdapter
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.news_fragment.*
 
-class NewsFragment : RxBaseFragment() {
+class NewsFragment : RxBaseFragment(), NewsDelegateAdapter.onViewSelectedListener {
 
     companion object {
         private val KEY_REDDIT_NEWS = "redditNews"
@@ -62,6 +65,12 @@ class NewsFragment : RxBaseFragment() {
         }
     }
 
+    override fun onItemSelected(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+    }
+
     private fun requestNews() {
         val subscription = newsManager.getNews(redditNews?.after ?: "")
             .subscribeOn(Schedulers.io())
@@ -81,7 +90,7 @@ class NewsFragment : RxBaseFragment() {
 
     private fun initAdapter() {
         if (newsList.adapter == null) {
-            newsList.adapter = NewsAdapter()
+            newsList.adapter = NewsAdapter(this)
         }
     }
 }
