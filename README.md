@@ -6,6 +6,10 @@ The folder contains solutions for tasks from the book “Head First Android Deve
 ([git](https://github.com/dogriffiths/HeadFirstAndroid2ndEdition)).
 
 * ### AndroidAppArchitecture
+Article 
+[1.1](http://www.fandroid.info/lektsiya-1-vvedenie-v-arhitekturu-klient-servernyh-android-prilozhenij-chast-1/) 
+[1.2](http://www.fandroid.info/lektsiya-1-vvedenie-v-arhitekturu-klient-servernyh-android-prilozhenij-chast-2/)
+[2](http://www.fandroid.info/lektsiya-2-po-arhitekture-android-prilozhenij-patterny-a-b-c/)  
 The folder contains solutions for tasks by the course "Android Application Architecture"
 ([youtube](https://www.youtube.com/playlist?list=PLyfVjOYzujuimhohH06QBmiBVhAuTiDYA))
  by Start Android channel.
