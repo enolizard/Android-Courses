@@ -7,6 +7,9 @@
         <item>London</item>
         <item>Washington</item>
         <item>Berlin</item>
+        <item>Paris</item>
+        <item>Minsk</item>
+        <item>Tokyo</item>
     </string-array>
 
 </resources>
