@@ -9,37 +9,33 @@ import by.enolizard.exampletwo.R;
 import by.enolizard.exampletwo.common.User;
 import by.enolizard.exampletwo.common.UserTable;
 
-public class UsersPresenter {
+public class UsersPresenter implements UsersContract.Presenter {
 
-    private UsersView view;
+    private UsersContract.View view;
     private final UsersModel model;
 
     public UsersPresenter(UsersModel model) {
         this.model = model;
     }
 
-    public void attachView(UsersView view) {
+    // UsersContract.Presenter
+    @Override
+    public void attachView(UsersContract.View view) {
         this.view = view;
     }
 
+    @Override
     public void detachView() {
         view = null;
     }
 
+    @Override
     public void viewIsReady() {
         loadUsers();
     }
 
-    public void loadUsers() {
-        model.loadUsers(new UsersModel.LoadUserCallback() {
-            @Override
-            public void onLoad(List<User> users) {
-                view.showUsers(users);
-            }
-        });
-    }
-
-    public void add() {
+    @Override
+    public void onClickAddBtn() {
         UserData userData = view.getUserData();
         if (TextUtils.isEmpty(userData.getName()) || TextUtils.isEmpty(userData.getEmail())) {
             view.showToast(R.string.empty_values);
@@ -59,7 +55,8 @@ public class UsersPresenter {
         });
     }
 
-    public void clear() {
+    @Override
+    public void onClickClearBtn() {
         view.showProgress();
         model.clearUsers(new UsersModel.CompleteCallback() {
             @Override
@@ -70,4 +67,12 @@ public class UsersPresenter {
         });
     }
 
+    public void loadUsers() {
+        model.loadUsers(new UsersModel.LoadUserCallback() {
+            @Override
+            public void onLoad(List<User> users) {
+                view.showUsers(users);
+            }
+        });
+    }
 }

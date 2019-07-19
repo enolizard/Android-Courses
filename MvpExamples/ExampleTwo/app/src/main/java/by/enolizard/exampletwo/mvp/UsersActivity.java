@@ -17,7 +17,7 @@ import by.enolizard.exampletwo.common.User;
 import by.enolizard.exampletwo.common.UserAdapter;
 import by.enolizard.exampletwo.database.DbHelper;
 
-public class UsersActivity extends AppCompatActivity implements UsersView {
+public class UsersActivity extends AppCompatActivity implements UsersContract.View {
 
     private UserAdapter userAdapter;
 
@@ -25,7 +25,7 @@ public class UsersActivity extends AppCompatActivity implements UsersView {
     private EditText editTextEmail;
     private ProgressDialog progressDialog;
 
-    private UsersPresenter presenter;
+    private UsersContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +47,14 @@ public class UsersActivity extends AppCompatActivity implements UsersView {
         findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.add();
+                presenter.onClickAddBtn();
             }
         });
 
         findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.clear();
+                presenter.onClickClearBtn();
             }
         });
 
@@ -76,7 +76,13 @@ public class UsersActivity extends AppCompatActivity implements UsersView {
     }
 
 
-    // UsersView interface
+    // UsersContract.View interface
+
+    @Override
+    public void setPresenter(UsersContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
     @Override
     public UserData getUserData() {
         UserData userData = new UserData();
