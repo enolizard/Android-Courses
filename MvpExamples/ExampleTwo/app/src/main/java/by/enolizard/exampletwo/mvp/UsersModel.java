@@ -35,7 +35,6 @@ public class UsersModel {
         clearUsersTask.execute();
     }
 
-
     interface LoadUserCallback {
         void onLoad(List<User> users);
     }

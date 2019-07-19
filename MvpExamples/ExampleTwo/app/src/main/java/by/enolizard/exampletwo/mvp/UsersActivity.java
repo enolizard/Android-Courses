@@ -17,7 +17,7 @@ import by.enolizard.exampletwo.common.User;
 import by.enolizard.exampletwo.common.UserAdapter;
 import by.enolizard.exampletwo.database.DbHelper;
 
-public class UsersActivity extends AppCompatActivity {
+public class UsersActivity extends AppCompatActivity implements UsersView {
 
     private UserAdapter userAdapter;
 
@@ -34,8 +34,13 @@ public class UsersActivity extends AppCompatActivity {
         init();
     }
 
-    private void init() {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
+    }
 
+    private void init() {
         editTextName = (EditText) findViewById(R.id.name);
         editTextEmail = (EditText) findViewById(R.id.email);
 
@@ -55,7 +60,6 @@ public class UsersActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         userAdapter = new UserAdapter();
 
@@ -71,6 +75,9 @@ public class UsersActivity extends AppCompatActivity {
         presenter.viewIsReady();
     }
 
+
+    // UsersView interface
+    @Override
     public UserData getUserData() {
         UserData userData = new UserData();
         userData.setName(editTextName.getText().toString());
@@ -78,27 +85,25 @@ public class UsersActivity extends AppCompatActivity {
         return userData;
     }
 
+    @Override
     public void showUsers(List<User> users) {
         userAdapter.setData(users);
     }
 
+    @Override
     public void showToast(int resId) {
         Toast.makeText(this, resId, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
     public void showProgress() {
         progressDialog = ProgressDialog.show(this, "", getString(R.string.please_wait));
     }
 
+    @Override
     public void hideProgress() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.detachView();
     }
 }

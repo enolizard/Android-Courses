@@ -11,21 +11,20 @@ import by.enolizard.exampletwo.common.UserTable;
 
 public class UsersPresenter {
 
-    private UsersActivity view;
+    private UsersView view;
     private final UsersModel model;
 
     public UsersPresenter(UsersModel model) {
         this.model = model;
     }
 
-    public void attachView(UsersActivity usersActivity) {
-        view = usersActivity;
+    public void attachView(UsersView view) {
+        this.view = view;
     }
 
     public void detachView() {
         view = null;
     }
-
 
     public void viewIsReady() {
         loadUsers();
