@@ -27,8 +27,11 @@ time published and the author of the news.
 ([git repository](https://github.com/juanchosaravia/KedditBySteps))
 
 * ### MvpExamples
-#### ExampleOne 
+  - **ExampleOne:** 
 ([git](https://github.com/antoniolg/androidmvp)),
 ([article](http://antonioleiva.com/mvp-android/))
-#### ExampleTwo
+  - **ExampleTwo:** 
 ([article](https://startandroid.ru/ru/blog/493-mvp-dlja-nachinajuschih-bez-bibliotek-i-interfejsov.html))
+  - **ExampleThree:** 
+([article](https://startandroid.ru/ru/blog/473-mvp-na-primere-jekrana-s-pin-kodom.html))
+
