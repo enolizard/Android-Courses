@@ -1,18 +1,9 @@
-package by.enolizard.exampletwo.common;
+package by.enolizard.exampletwo.features.users;
 
-public class User {
+public class UserData {
 
-    private long id;
     private String name;
     private String email;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

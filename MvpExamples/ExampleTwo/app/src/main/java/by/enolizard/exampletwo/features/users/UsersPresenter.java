@@ -1,4 +1,4 @@
-package by.enolizard.exampletwo.mvp;
+package by.enolizard.exampletwo.features.users;
 
 import android.content.ContentValues;
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import java.util.List;
 
 import by.enolizard.exampletwo.R;
-import by.enolizard.exampletwo.common.User;
+import by.enolizard.exampletwo.common.UserModel;
 import by.enolizard.exampletwo.common.UserTable;
 
 public class UsersPresenter implements UsersContract.Presenter {
@@ -70,8 +70,8 @@ public class UsersPresenter implements UsersContract.Presenter {
     public void loadUsers() {
         model.loadUsers(new UsersModel.LoadUserCallback() {
             @Override
-            public void onLoad(List<User> users) {
-                view.showUsers(users);
+            public void onLoad(List<UserModel> userModels) {
+                view.showUsers(userModels);
             }
         });
     }

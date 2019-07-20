@@ -5,62 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
-        app:layout_constraintLeft_toRightOf="@+id/email" />
-
     <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
+        android:layout_marginEnd="8dp"
         android:inputType="textPersonName"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_add"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Name" />
 
-    <EditText
-        android:id="@+id/email"
+    <Button
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:layout_marginEnd="16dp"
+        android:text="@string/add"
+        app:layout_constraintLeft_toRightOf="@id/txt_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txt_name" />
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_clear"
+        app:layout_constraintTop_toBottomOf="@id/txt_name"
         tools:text="email@email.com" />
 
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/txt_email"
+        app:layout_constraintTop_toTopOf="@id/txt_email" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="0dp"
+        android:id="@+id/rv_users_list"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@id/txt_email"
+        app:layout_constraintVertical_weight="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

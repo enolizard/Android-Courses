@@ -1,4 +1,4 @@
-package by.enolizard.exampletwo.mvp;
+package by.enolizard.exampletwo.features.users;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import by.enolizard.exampletwo.R;
-import by.enolizard.exampletwo.common.User;
+import by.enolizard.exampletwo.common.UserModel;
 import by.enolizard.exampletwo.common.UserAdapter;
 import by.enolizard.exampletwo.database.DbHelper;
 
@@ -21,8 +21,8 @@ public class UsersActivity extends AppCompatActivity implements UsersContract.Vi
 
     private UserAdapter userAdapter;
 
-    private EditText editTextName;
-    private EditText editTextEmail;
+    private EditText textName;
+    private EditText textEmail;
     private ProgressDialog progressDialog;
 
     private UsersContract.Presenter presenter;
@@ -41,17 +41,17 @@ public class UsersActivity extends AppCompatActivity implements UsersContract.Vi
     }
 
     private void init() {
-        editTextName = (EditText) findViewById(R.id.name);
-        editTextEmail = (EditText) findViewById(R.id.email);
+        textName = findViewById(R.id.txt_name);
+        textEmail = findViewById(R.id.txt_email);
 
-        findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onClickAddBtn();
             }
         });
 
-        findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onClickClearBtn();
@@ -63,7 +63,7 @@ public class UsersActivity extends AppCompatActivity implements UsersContract.Vi
 
         userAdapter = new UserAdapter();
 
-        RecyclerView userList = (RecyclerView) findViewById(R.id.list);
+        RecyclerView userList = findViewById(R.id.rv_users_list);
         userList.setLayoutManager(layoutManager);
         userList.setAdapter(userAdapter);
 
@@ -77,7 +77,6 @@ public class UsersActivity extends AppCompatActivity implements UsersContract.Vi
 
 
     // UsersContract.View interface
-
     @Override
     public void setPresenter(UsersContract.Presenter presenter) {
         this.presenter = presenter;
@@ -85,15 +84,16 @@ public class UsersActivity extends AppCompatActivity implements UsersContract.Vi
 
     @Override
     public UserData getUserData() {
+
         UserData userData = new UserData();
-        userData.setName(editTextName.getText().toString());
-        userData.setEmail(editTextEmail.getText().toString());
+        userData.setName(textName.getText().toString());
+        userData.setEmail(textEmail.getText().toString());
         return userData;
     }
 
     @Override
-    public void showUsers(List<User> users) {
-        userAdapter.setData(users);
+    public void showUsers(List<UserModel> userModels) {
+        userAdapter.setData(userModels);
     }
 
     @Override

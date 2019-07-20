@@ -1,4 +1,4 @@
-package by.enolizard.exampletwo.mvp;
+package by.enolizard.exampletwo.features.users;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import by.enolizard.exampletwo.common.User;
+import by.enolizard.exampletwo.common.UserModel;
 import by.enolizard.exampletwo.common.UserTable;
 import by.enolizard.exampletwo.database.DbHelper;
 
@@ -36,14 +36,14 @@ public class UsersModel {
     }
 
     interface LoadUserCallback {
-        void onLoad(List<User> users);
+        void onLoad(List<UserModel> userModels);
     }
 
     interface CompleteCallback {
         void onComplete();
     }
 
-    class LoadUsersTask extends AsyncTask<Void, Void, List<User>> {
+    class LoadUsersTask extends AsyncTask<Void, Void, List<UserModel>> {
 
         private final LoadUserCallback callback;
 
@@ -52,24 +52,25 @@ public class UsersModel {
         }
 
         @Override
-        protected List<User> doInBackground(Void... params) {
-            List<User> users = new LinkedList<>();
+        protected List<UserModel> doInBackground(Void... params) {
+            List<UserModel> userModels = new LinkedList<>();
             Cursor cursor = dbHelper.getReadableDatabase().query(UserTable.TABLE, null, null, null, null, null, null);
             while (cursor.moveToNext()) {
-                User user = new User();
-                user.setId(cursor.getLong(cursor.getColumnIndex(UserTable.COLUMN.ID)));
-                user.setName(cursor.getString(cursor.getColumnIndex(UserTable.COLUMN.NAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(UserTable.COLUMN.EMAIL)));
-                users.add(user);
+                long id = cursor.getLong(cursor.getColumnIndex(UserTable.COLUMN.ID));
+                String name = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN.NAME));
+                String email = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN.EMAIL));
+
+                UserModel userModel = new UserModel(id, name, email);
+                userModels.add(userModel);
             }
             cursor.close();
-            return users;
+            return userModels;
         }
 
         @Override
-        protected void onPostExecute(List<User> users) {
+        protected void onPostExecute(List<UserModel> userModels) {
             if (callback != null) {
-                callback.onLoad(users);
+                callback.onLoad(userModels);
             }
         }
     }

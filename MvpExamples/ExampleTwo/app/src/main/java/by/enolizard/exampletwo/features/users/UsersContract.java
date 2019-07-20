@@ -1,8 +1,8 @@
-package by.enolizard.exampletwo.mvp;
+package by.enolizard.exampletwo.features.users;
 
 import java.util.List;
 
-import by.enolizard.exampletwo.common.User;
+import by.enolizard.exampletwo.common.UserModel;
 
 public interface UsersContract {
     interface View {
@@ -11,7 +11,7 @@ public interface UsersContract {
 
         UserData getUserData();
 
-        void showUsers(List<User> users);
+        void showUsers(List<UserModel> userModels);
 
         void showToast(int resId);
 

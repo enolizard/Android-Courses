@@ -1,6 +1,5 @@
 package by.enolizard.exampletwo.common;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,20 @@ import by.enolizard.exampletwo.R;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
 
-    List<User> data = new ArrayList<>();
+    private List<UserModel> data = new ArrayList<>();
 
+    public void setData(List<UserModel> userModels) {
+        data.clear();
+        data.addAll(userModels);
+        notifyDataSetChanged();
+    }
+
+    // RecyclerView.Adapter abstract class
     @Override
     public UserHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item, parent, false);
+        View view = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.user_item, parent, false);
         return new UserHolder(view);
     }
 
@@ -33,25 +41,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         return data.size();
     }
 
-    public void setData(List<User> users) {
-        data.clear();
-        data.addAll(users);
-        notifyDataSetChanged();
-        Log.d("qweee", "size  = " + getItemCount());
-    }
+    // custom RecyclerView.ViewHolder for UserAdapter
+    class UserHolder extends RecyclerView.ViewHolder {
 
-    static class UserHolder extends RecyclerView.ViewHolder {
+        private TextView text;
 
-        TextView text;
-
-        public UserHolder(View itemView) {
+        UserHolder(View itemView) {
             super(itemView);
-            text = (TextView) itemView.findViewById(R.id.text);
+            text = itemView.findViewById(R.id.txt_item_text);
         }
 
-        void bind(User user) {
-            text.setText(String.format("id: %s, name: %s, email: %s", user.getId(), user.getName(), user.getEmail()));
+        void bind(UserModel userModel) {
+            text.setText(String.format("id: %s, name: %s, email: %s", userModel.getId(), userModel.getName(), userModel.getEmail()));
         }
     }
-
 }
