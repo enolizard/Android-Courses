@@ -31,7 +31,13 @@ time published and the author of the news.
 ([git](https://github.com/antoniolg/androidmvp)),
 ([article](http://antonioleiva.com/mvp-android/))
   - **ExampleTwo:** 
+([git](https://github.com/startandroid/mvpsample)), 
 ([article](https://startandroid.ru/ru/blog/493-mvp-dlja-nachinajuschih-bez-bibliotek-i-interfejsov.html))
   - **ExampleThree:** 
+([git](https://github.com/startandroid/PinCodeScreen)), 
 ([article](https://startandroid.ru/ru/blog/473-mvp-na-primere-jekrana-s-pin-kodom.html))
+  - **ExampleFour:** 
+([git](https://github.com/remind101/android-arch-sample)), 
+([article](https://habr.com/ru/post/278769/)
+
 

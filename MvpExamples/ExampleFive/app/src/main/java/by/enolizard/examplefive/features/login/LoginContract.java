@@ -11,9 +11,9 @@ interface LoginContract {
 
         void hideProgress();
 
-        void goToWork();
-
         void toastText(String text);
+
+        void goToWork();
 
         void goToRegistration();
     }
